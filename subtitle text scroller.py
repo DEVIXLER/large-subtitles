@@ -149,17 +149,17 @@ offsety = '01201233'
 
 
 def pixels2braille(pixels):
-    hight = len(pixels)
+    height = len(pixels)
     width = len(pixels[0])
     output = []
-    for y in range(math.ceil(hight / 4)):
+    for y in range(math.ceil(height / 4)):
         row = ""
         for x in range(math.ceil(width / 2)):
             bit = 0
             for i in range(len(offsetx)):
                 scany = y * 4 + int(offsety[i])
                 scanx = x * 2 + int(offsetx[i])
-                if scanx < width and scany < hight:
+                if scanx < width and scany < height:
                     bit += int(pixels[scany][scanx]) * 2 ** i
             row += chr(int(bit) + 10240)
         output.append(row)
